@@ -1,0 +1,4 @@
+.terraform
+.idea
+.vscode
+.terraform.lock.hcl
