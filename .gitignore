@@ -2,3 +2,4 @@
 .idea
 .vscode
 .terraform.lock.hcl
+terraform.tfvars
