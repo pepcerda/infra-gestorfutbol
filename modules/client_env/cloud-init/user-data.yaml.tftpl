@@ -1,0 +1,29 @@
+
+#cloud-config
+package_update: true
+packages:
+- docker
+
+write_files:
+- path: /opt/app/docker-compose.yml
+permissions: '0644'
+owner: root:root
+content: |
+${indent(6, docker_compose_content)}
+
+- path: /opt/app/backend/application.properties
+permissions: '0640'
+owner: root:root
+content: |
+${indent(6, application_properties_content)}
+
+runcmd:
+- systemctl enable docker
+- systemctl start docker
+# Instalar docker-compose binario (opcional si no usas plugin CLI)
+- curl -L https://github.com/docker/compose/releases/download/v2.29.2/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+- chmod +x /usr/local/bin/docker-compose
+# Login a ECR (requiere el Instance Profile con permisos ecr:GetAuthorizationToken)
+- aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin 050752624219.dkr.ecr.${region}.amazonaws.com
+- mkdir -p /opt/docker/backend/media
+- cd /opt/app && docker-compose up -d

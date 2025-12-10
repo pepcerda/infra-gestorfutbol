@@ -56,11 +56,11 @@ variable "db_pass" {
 
 # Health checks
 variable "frontend_health_path" {
-  type = string
+  type    = string
   default = "/"
 }
 variable "backend_health_path" {
-  type = string
+  type    = string
   default = "/actuator/health"
 }
 
@@ -69,5 +69,5 @@ variable "backend_paths" {
   type = list(string)
   default = [
     "/gestor-futbol/api*",
-    "/gestor-futbol/public*"]
+  "/gestor-futbol/public*"]
 }

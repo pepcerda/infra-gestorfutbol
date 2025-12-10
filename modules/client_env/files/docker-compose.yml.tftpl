@@ -1,0 +1,21 @@
+
+version: '3.8'
+services:
+frontend:
+image: ${image_frontend}
+ports: [ "80:80" ]
+restart: always
+
+backend:
+image: ${image_backend}
+environment:
+POSTGRES_URI: ${db_host}
+POSTGRES_DB:  ${db_name}
+POSTGRES_USER:${db_user}
+POSTGRES_PASSWORD:${db_pass}
+SPRING_CONFIG_LOCATION: "file:/app/config/application.properties"
+volumes:
+- /opt/app/backend/application.properties:/app/config/application.properties
+- /opt/docker/backend/media/:/app/media
+ports: [ "8080:8080" ]
+restart: always

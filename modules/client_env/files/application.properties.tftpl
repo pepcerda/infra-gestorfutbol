@@ -1,0 +1,15 @@
+
+# --- Backend GestorFutbol ---
+spring.datasource.url=jdbc:postgresql://${db_host}:5432/${db_name}
+spring.datasource.username=${db_user}
+spring.datasource.password=${db_pass}
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+
+# Límite de ficheros y rutas (ajústalo a tu app)
+spring.servlet.multipart.max-file-size=10MB
+spring.servlet.multipart.max-request-size=20MB
+app.logo.upload-dir=/app/media/
+app.caixafixa.upload-dir=/app/media/docs/
+app.logo.access-url=/gestor-futbol/public/
+jwt.uri=https://auth.${root_domain}
