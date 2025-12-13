@@ -18,7 +18,14 @@ module "db_trial" {
 
   tenant_db_name = "clubx_trial"
   tenant_db_user = "clubx_trial_user"
-  tenant_db_pass = "CAMBIA_TRIAL_PASSWORD"
+  tenant_db_pass = "admin"
+
+  bastion_host = var.bastion_host
+  bastion_private_key_path = var.bastion_private_key_path
+  bastion_user = var.bastion_user
+  bastion_port = var.bastion_port
+  local_forward_port = var.local_forward_port
+
 }
 
 
@@ -66,6 +73,13 @@ module "db_prod" {
   tenant_db_name = "clubx_prod"
   tenant_db_user = "clubx_prod_user"
   tenant_db_pass = "CAMBIA_PROD_PASSWORD"
+
+  bastion_host = var.bastion_host
+  bastion_private_key_path = var.bastion_private_key_path
+  bastion_user = var.bastion_user
+  bastion_port = var.bastion_port
+  local_forward_port = var.local_forward_port
+
 }
 
 
